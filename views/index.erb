@@ -1,0 +1,20 @@
+<h1>Employee Tracker</h1>
+
+<form action="/" method="post">
+
+  <label for="dep_name">Name</label>
+  <input id="dep_name" name="dep_name" type="text">
+
+  <button type="submit" class="btn">Add Department</button>
+</form>
+
+<h3>Departments:</h3>
+<% if @departments.any? %>
+  <% @departments.each do |department| %>
+    <ul>
+      <li><a href="/department/<%= department.id %>"><%= department.name%></a></li>
+    </ul>
+    <% end %>
+  <% else %>
+    <p>There are no departments yet listed.</p>
+<% end %>
