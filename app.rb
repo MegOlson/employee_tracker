@@ -32,3 +32,9 @@ patch('/departments/:id/edit') do
   department.update({name: params["dep_name"]})
   redirect "/"
 end
+
+delete('/departments/:id/delete') do
+  department = Department.find(params[:id])
+  department.delete
+  redirect "/"
+end
