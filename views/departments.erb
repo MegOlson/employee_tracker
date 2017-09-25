@@ -18,4 +18,27 @@
   </div>
 </form>
 
+<form class="" action="/employee" method="post">
+  <input type="hidden" name="dep_id" value="<%= @department.id %>">
+  <div class="form-group">
+    <label for="employee">Employee Name</label>
+    <input type="text" name="name" class="form-control" >
+  </div>
+  <button type="submit" name="button" class="btn">Add Employee</button>
+</form>
+
+<br>
+
+<% if @employees.any? %>
+  <% @employees.each do |employee| %>
+    <ul>
+      <li><a href="/employees/<%= employee.id %>"> <%= employee.name %> </a></li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>Currently there are no employees.</p>
+<% end %>
+<br>
+
+
 <h5><a href="/">Home</a></h5>

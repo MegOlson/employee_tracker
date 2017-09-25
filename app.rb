@@ -23,7 +23,17 @@ post('/') do
 end
 
 get('/departments/:id') do
+  @employees = Employee.all
   @department = Department.find(params[:id])
+  erb(:departments)
+end
+
+post('/employee') do
+  @department = Department.find(params['dep_id'].to_i)
+  employee_name = params['name']
+  employee = Employee.new({name: employee_name})
+  employee.save
+  @employees = Employee.all
   erb(:departments)
 end
 
