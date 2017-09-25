@@ -72,7 +72,8 @@ end
 
 patch("/employee/add/:id") do
   @project = Project.find(params[:id])
-  @employee = Project.find(params["employee_id"])
-  @employees = Project.find_by_employee(@employee.id)
+  @employee = Employee.find(params["employee_id"])
+  @employee.update({:project_id => @project.id})
+  @employees = Project.find_by_employee(@project.id)
   erb(:project_employees)
 end
