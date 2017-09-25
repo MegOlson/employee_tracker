@@ -1,20 +1,43 @@
-<h1>Employee Tracker</h1>
+<h1><center>Employee Tracker</center></h1><br><br><br>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/department" method="post">
 
-<form action="/" method="post">
+      <label for="dep_name">Department Name</label>
+      <input id="dep_name" name="dep_name" type="text">
 
-  <label for="dep_name">Name</label>
-  <input id="dep_name" name="dep_name" type="text">
+      <button type="submit" class="btn">Add Department</button>
+    </form>
 
-  <button type="submit" class="btn">Add Department</button>
-</form>
-
-<h3>Departments:</h3>
-<% if @departments.any? %>
-  <% @departments.each do |department| %>
-    <ul>
-      <li><a href="/departments/<%= department.id %>"><%= department.name%></a></li>
-    </ul>
+    <h3>Departments:</h3>
+    <% if @departments.any? %>
+      <% @departments.each do |department| %>
+        <ul>
+          <li><a href="/departments/<%= department.id %>"><%= department.name%></a></li>
+        </ul>
+        <% end %>
+      <% else %>
+        <p>There are no departments yet listed.</p>
     <% end %>
-  <% else %>
-    <p>There are no departments yet listed.</p>
-<% end %>
+  </div>
+  <div class="col-md-6">
+    <form action="/project" method="post">
+
+      <label for="project_name">Project Name</label>
+      <input id="project_name" name="project_name" type="text">
+
+      <button type="submit" class="btn">Add Project</button>
+    </form>
+
+    <h3>Projects:</h3>
+    <% if @projects.any? %>
+      <% @projects.each do |project| %>
+        <ul>
+          <li><a href="/projects/<%= project.id %>"><%= project.name%></a></li>
+        </ul>
+        <% end %>
+      <% else %>
+        <p>There are no projects yet listed.</p>
+    <% end %>
+  </div>
+</div>

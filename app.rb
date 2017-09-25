@@ -10,16 +10,31 @@ require("pry")
 
 
 get('/') do
+  @projects = Project.all
   @departments = Department.all
   erb(:index)
 end
 
-post('/') do
+post('/department') do
   dep_name = params["dep_name"]
-  department = Department.new({:name => dep_name})
-  department.save
+  if !dep_name.empty?
+    department = Department.new({:name => dep_name})
+    department.save
+  end
   @departments = Department.all
+  @projects = Project.all
   erb(:index)
+end
+
+post('/project') do
+  project_name = params["project_name"]
+  if !project_name.empty?
+    project = Project.new({:name => project_name})
+    project.save
+  end
+  @projects = Project.all
+  @departments = Department.all
+  redirect "/"
 end
 
 get('/departments/:id') do
