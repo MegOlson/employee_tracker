@@ -1,0 +1,21 @@
+<h1><%= @department.name %></h1>
+
+
+<form class="" action="/departments/<%= @department.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="dep_name">Name</label>
+    <input type="text" name="dep_name" class="form-control">
+  </div>
+  <br><button type="submit" name="button" class="btn">Update Department Name</button>
+</form>
+<br>
+
+<form class="" action="/departments/<%= @department.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <div class="form-group">
+    <button type="button" name="button" class="btn">Delete</button>
+  </div>
+</form>
+
+<h5><a href="/">Home</a></h5>

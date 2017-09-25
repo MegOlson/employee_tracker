@@ -21,3 +21,14 @@ post('/') do
   @departments = Department.all
   erb(:index)
 end
+
+get('/departments/:id') do
+  @department = Department.find(params[:id])
+  erb(:departments)
+end
+
+patch('/departments/:id/edit') do
+  department = Department.find(params[:id])
+  department.update({name: params["dep_name"]})
+  redirect "/"
+end
