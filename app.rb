@@ -63,3 +63,16 @@ delete('/departments/:id/delete') do
   department.delete
   redirect "/"
 end
+
+get('/projects/:id') do
+  @project = Project.find(params[:id])
+  @employee_list = Employee.all
+  erb(:projects)
+end
+
+patch("/employee/add/:id") do
+  @project = Project.find(params[:id])
+  @employee = Project.find(params["employee_id"])
+  @employees = Project.find_by_employee(@employee.id)
+  erb(:project_employees)
+end

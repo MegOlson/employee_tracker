@@ -1,0 +1,9 @@
+<h1><%= @project.name %></h1>
+
+<% if @employees.any? %>
+  <% @employees.each do |employee| %>
+  <ul>
+    <li> <%= employee.name %> </li>
+  </ul>
+  <% end %>
+<% end %>
